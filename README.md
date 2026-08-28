@@ -2,7 +2,7 @@
 
 A tool to parse JSON-formatted authentication reports from Checkmarx CxOne's DAST tool.
 
-It is intended to be used to review data and find errors in the authentication process.
+It is intended to be used to review data and find errors in the authentication process. The tool works 100% in client-side JS. This is to avoid potentially secret customer data in the authentication report from leaking.
 
 ## Requirements
 
