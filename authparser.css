@@ -1,0 +1,338 @@
+:root {
+    color-scheme: light dark;
+}
+
+#auth_status {
+    line-height: 1em;
+    font-family: monospace;
+    text-shadow: none;
+}
+
+body {
+    margin: 20px 420px 40px 50px;
+    width: initial;
+    color: #222;
+    background: light-dark(#f2f2f2, #1f1f1f);
+    color: light-dark(#222, #cccccc);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    /* text-shadow: 0 1px 0 #ffffff; */
+    max-width: 73%;
+}
+
+code {
+    background: white;
+}
+
+a {
+    border-bottom: 1px solid light-dark(#444444, #cccccc);
+    color: light-dark(#444444, #cccccc);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #09f;
+}
+
+#overlay {
+    position: fixed;
+    width: 350px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+#overlay .window {
+    padding: 5px 10px;
+    border: 1px solid light-dark(rgba(0, 0, 0, 0.2), rgba(255,255, 255, 0.2));
+    box-shadow: 1px 1px 3px light-dark(rgba(0, 0, 0, 0.2), rgba(255,255, 255, 0.2));
+    border-radius: 5px;
+    background-color: light-dark(#e9e9e9, #2c2c2c);
+    margin: 10px;
+}
+
+#overlay .window#file_upload.no-upload {
+    border-color: light-dark(#d95, #a50);
+    box-shadow: 1px 1px 5px light-dark(rgba(255, 50, 0, 0.3), rgba(255, 120, 60, 0.5));
+}
+
+#summary ol {
+    margin: 0;
+}
+
+a[href^="#"] {
+    font-size: 1em;
+    border-bottom: 1px dotted;
+}
+
+a[href^="https://www.zaproxy.org/docs/internal-statistics"] {
+    font-size: 1em;
+    margin: 0
+}
+
+/* Tooltip container */
+span.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dashed;
+}
+
+/* Tooltip text */
+.tooltiptext {
+    visibility: hidden;
+    /* Hidden by default */
+    width: 160px;
+    background-color: black;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    /* Ensure tooltip is displayed above content */
+    text-shadow: none;
+}
+
+.tooltiptext.zap-stat {
+    text-align: left;
+    width: 400px;
+    font-size: 0.9em;
+}
+
+.tooltiptext.undocumented {
+    background-color: #999;
+    text-align: center;
+}
+
+/* Show the tooltip text on hover */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.screenshot-button {
+    padding: 0;
+    margin: 0;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    cursor: pointer;
+}
+
+.no-screenshot {
+    border: 1px solid #aaa;
+    margin-right: 10px;
+}
+@media (prefers-color-scheme: dark) {
+    .no-screenshot { filter: invert(1) }
+}
+
+.screenshot {
+    max-width: 350px;
+    max-height: 150px;
+    border-radius: 5px;
+}
+
+#large-screenshot {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.login-step {
+    margin-left: 5px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-left: 1px solid #ccc;
+}
+
+.login-step:nth-child(even) {
+    background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+}
+
+.login-step .step-info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.dom-details {
+    border-collapse: collapse;
+    display: inline-table;
+    margin: 5px
+}
+
+.dom-details tr,
+.dom-details td,
+.dom-details th {
+    border: 1px solid #ccc;
+    padding: 1px 3px;
+    line-height: 1.2em;
+}
+
+.special-value {
+    color: light-dark(#444, #999);
+}
+
+.message {
+    padding-left: 10px;
+    border-left: 3px solid #777;
+    margin-bottom: 8px;
+    background-color: rgba(120, 120, 120, 0.1);
+}
+
+.message.not-in-scope {
+    background-color: light-dark(rgb(200, 190, 190), rgb(70, 59, 59));
+    border-left-color: #900;
+}
+
+.message.zap-initiator-15 {
+    background-color: light-dark(rgb(210, 190, 210), rgb(75, 51, 75));
+    border-left-color: rgb(150, 0, 180);
+}
+
+.message pre {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.message .req-container,
+.message .res-container {
+    padding-left: 5px;
+    border-left: 3px solid;
+    margin-bottom: 5px;
+}
+
+.message .req-container {
+    border-left-color: rgb(0, 153, 255);
+    background-color: light-dark(#DAE2E7, #2d3e49);
+}
+
+.message .res-container {
+    border-left-color: rgb(0, 153, 0);
+    background-color: light-dark(#DAE2DA, #31473a);
+}
+
+.message .res-container.bad-response {
+    border-left-color: rgb(153, 0, 0);
+    background-color: light-dark(#e2dada, hsl(0, 20%, 20%));
+}
+
+.message .res-container .res-status code,
+#summary code {
+    padding: 1px 5px;
+    font-size: 0.9em;
+    border-radius: 3px;
+    border: 1px solid light-dark(#555, #aaa);
+    background-color: rgba(220, 220, 220, 0.2);
+    text-shadow: none;
+}
+
+.message .res-container .res-status code.good,
+#summary code.good {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.message .res-container .res-status code.bad,
+#summary code.bad {
+    background-color: rgba(255, 0, 0, 0.1)
+}
+
+.message .res-container .res-status code.redirect,
+#summary code.redirect {
+    background-color: rgba(255, 255, 0, 0.1)
+}
+
+#summary .advice p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.small {
+    font-size: 0.8em;
+}
+
+input.value {
+    border: 0;
+    background-color: transparent;
+    width: calc(100% - 40px);
+}
+
+input.hide-secret {
+    color: light-dark(#000, #fff);
+    background-color: light-dark(#000, #fff);
+    text-shadow: none;
+    font-family: monospace;
+}
+
+input.hide-secret:focus {
+    color: inherit;
+    background-color: transparent;
+    text-shadow: inherit;
+}
+
+summary {
+    cursor: help
+}
+
+.code-block,
+#auth_report_json {
+    display: block;
+    width: 700px;
+    max-width: 100%;
+    height: 400px;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: scroll;
+}
+
+.message-block {
+    display: block;
+    width: 100%;
+    height: 250px;
+    resize: vertical;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: scroll;
+}
+
+.align-right {
+    text-align: right
+}
+
+legend {
+    max-width: 750px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+#tooltip_display {
+    background-color: #333;
+    color: #fff;
+    padding: 2px 5px;
+    position: absolute;
+    font-size: 0.9em;
+    text-shadow: none;
+    border-radius: 3px;
+    max-width: 80%;
+}
+
+#tooltip_display:visible {
+    display: inline-block
+}
+
+#step_tab {
+    position: fixed;
+    top: 75px;
+    left: -55px;
+    transform: rotate(-90deg);
+    width: 150px;
+    height: 40px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 24px;
+}
