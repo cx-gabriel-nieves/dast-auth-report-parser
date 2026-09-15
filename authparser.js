@@ -1381,6 +1381,13 @@ function displaySummary(run_key) {
     });
     $("#summary .content").append(poll_summary);
 
+    $.each($("[id^='login_steps_']"), function(key, el) {
+        console.log("_check_error", el, key);
+        if ($(el).find("h4:first").text().match(/Error/) && $(".incomplete-run-error-warning").length == 0) {
+            $("#summary .content").prepend(`<a href="#${$(el).attr("id")}" class="message-badge bad incomplete-run-error-warning">Critical Error: The authentication steps did not complete. The final step ends in an error</a>`);
+        }
+    });
+
     analyzeConclusion();
 }
 

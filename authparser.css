@@ -222,27 +222,32 @@ span.tooltip {
 }
 
 .message .res-container .res-status code,
-#summary code {
+#summary code, 
+.message-badge {
     padding: 1px 5px;
     font-size: 0.9em;
     border-radius: 3px;
     border: 1px solid light-dark(#555, #aaa);
     background-color: rgba(220, 220, 220, 0.2);
     text-shadow: none;
+    display: inline-block;
 }
 
 .message .res-container .res-status code.good,
-#summary code.good {
+#summary code.good,
+.message-badge.good {
     background-color: rgba(0, 255, 0, 0.1);
 }
 
 .message .res-container .res-status code.bad,
-#summary code.bad {
+#summary code.bad,
+.message-badge.bad {
     background-color: rgba(255, 0, 0, 0.1)
 }
 
 .message .res-container .res-status code.redirect,
-#summary code.redirect {
+#summary code.redirect,
+.message-badge.warning {
     background-color: rgba(255, 255, 0, 0.1)
 }
 
