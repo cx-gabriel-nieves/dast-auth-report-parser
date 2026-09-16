@@ -146,11 +146,18 @@ span.tooltip {
     margin-left: 5px;
     margin-bottom: 20px;
     padding: 10px 20px;
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, #ccc, rgba(204, 204, 204, 0)) 1;
     border-left: 1px solid #ccc;
 }
 
 .login-step:nth-child(even) {
     background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+}
+
+.login-step h4 {
+    margin-top: 5px;
+    font-size: 1.2em;
 }
 
 .login-step .step-info {
