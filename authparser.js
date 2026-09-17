@@ -1084,6 +1084,7 @@ var includedPaths = [];
 var copyFade = null;
 var statTotals = {};
 var runInfo = null;
+var lastEstimatedStep = 0;
 
 function resetInfo() {
     return {
@@ -1283,6 +1284,7 @@ function parseContents(contents) {
 
         this_run.append($("<h3></h3>").text(`Steps (${run.steps.length} steps)`));
         var login_steps = $(`<div id="login_steps_${run_key}"></div>`);
+        lastEstimatedStep = 0;
         run.steps.forEach((step, step_key) => {
             login_steps.append(parseStep(run_key, step, step_key));
         });
@@ -1500,7 +1502,25 @@ function parseStep(parent_index, step, step_index) {
 
     // Show estimated portion of a zst snippet when loading a recording
     if (Object.keys(detectedScript).length) {
-        this_step.append(`<details><summary>zst snippet (estimated)</summary><textarea class="code-block">${JSON.stringify(detectedScript.statements[step_index + 1], null, " ")}</textarea></details>`)
+        let matched_step = null;
+        let filtered_statements = [];
+        let match_type = "";
+        let get_step_id = step.description.match(/\((\d+)\)/);
+        if (get_step_id) {
+            match_type = "description ";
+            filtered_statements = detectedScript.statements.filter((value, index) => {
+                return typeof value.index != "undefined" && value.index == parseInt(get_step_id[1]);
+            });
+            matched_step = filtered_statements[0];
+        } else {
+            match_type = "index ";
+            filtered_statements = detectedScript.statements.filter((value, index) => {
+                return typeof value.elementType != "undefined" && value.index > lastEstimatedStep && !value.elementType.match(/Zest(ClientElementClear|Comment)/i);
+            });
+            matched_step = filtered_statements[0];
+        }
+        lastEstimatedStep = parseInt(matched_step.index);
+        this_step.append(`<details><summary>zst snippet (${match_type}estimated)</summary><textarea class="code-block">${JSON.stringify(matched_step, null, " ")}</textarea></details>`)
     }
 
     if (step.webElement) {
