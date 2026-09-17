@@ -1485,7 +1485,10 @@ function parseStep(parent_index, step, step_index) {
     let this_step = $(`<div id="login_steps_${parent_index}_${step_index + 1}" class="login-step"></div>`);
     let step_info = $(`<div class="step-info"></div>`);
 
-    this_step.append(`<h4 class="step-header" stepid="${step.id}">Step #${step_index + 1}: ${step.description}</h4>`);
+    this_step.append(`<h4 class="step-header" stepid="${step.id}">
+        <span class="step-number">#${step_index + 1}</span>
+        <span class="step-description">${step.description}</span>
+    </h4>`);
 
     if (step.screenshot) {
         step_info.append(`<button class="screenshot-button" popovertarget="large-screenshot"><img class="screenshot" src="data:image/png;base64,${step.screenshot}"></button>`);

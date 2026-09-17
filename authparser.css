@@ -155,9 +155,22 @@ span.tooltip {
     background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
 }
 
-.login-step h4 {
-    margin-top: 5px;
+.login-step .step-header {
+    margin-top: 0;
+    margin-bottom: 8px;
     font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.login-step .step-header .step-number {
+    font-size: 2em;
+    margin: 0 15px 0 5px;
+}
+
+.login-step .step-header .step-description {
+    /* margin-top: 10px; */
 }
 
 .login-step .step-info {
