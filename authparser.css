@@ -201,6 +201,14 @@ span.tooltip {
     border-left-color: rgb(150, 0, 180);
 }
 
+.message .ellipsis {
+    width: calc(100% - 150px);
+    max-width: 1000px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .message pre {
     margin: 0;
     font-size: 0.8em;
@@ -325,17 +333,22 @@ legend {
 #tooltip_display {
     background-color: #333;
     color: #fff;
+    border: 1px solid #aaa;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
     padding: 2px 5px;
     position: absolute;
     font-size: 0.9em;
     text-shadow: none;
     border-radius: 3px;
     max-width: 80%;
+    word-break: break-all;
 }
 
 #tooltip_display:visible {
     display: inline-block
 }
+
+[tooltip] { cursor: help }
 
 #step_tab {
     position: fixed;

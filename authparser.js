@@ -1612,7 +1612,7 @@ function checkHideSecret(value, name) {
 function messageBox(obj, id = 0, run_key = 0, step_id = 0) {
     var base = $(`
     <fieldset class="message">
-        <div class="message-req"></div>
+        <div class="ellipsis message-req"></div>
         <div class="req-timestamp"><strong>Request Timestamp:</strong> </div>
         <div class="res-time"><strong>Response Time:</strong> </div>
         <div class="initiator"><strong>Initiator:</strong> </div>
@@ -1951,6 +1951,7 @@ function getStatName(key) {
 
 var hover_target = null;
 var stick_tooltip = null;
+var show_tooltip = false;
 var hide_tooltip_timer = null;
 
 $(document).ready(function() {
@@ -1995,18 +1996,24 @@ $(document).ready(function() {
             }
 
             hover_target = e.target;
-            $("#tooltip_display")
-                .text($(e.target).attr("tooltip"))
-                .prop("hidden", false)
-                .css({
-                    "left": $(e.target).position().left,
-                    "top": $(e.target).position().top - parseInt($(e.target).outerHeight()) - 5
-                });
+            show_tooltip = true;
+            setTimeout(function() {
+                if (show_tooltip) {
+                    $("#tooltip_display")
+                        .text($(e.target).attr("tooltip"))
+                        .prop("hidden", false)
+                        .css({
+                            "left": $(e.target).position().left,
+                            "top": $(e.target).position().top - parseInt($(e.target).outerHeight()) - 5
+                        });
+                }
+            }, 500);
         }
     });
 
     $(document).mouseout(function(e) {
         if (e.target == hover_target) {
+            show_tooltip = false;
             if (hide_tooltip_timer === null) {
                 hide_tooltip_timer = setTimeout(function() {
                     hover_target = null;
