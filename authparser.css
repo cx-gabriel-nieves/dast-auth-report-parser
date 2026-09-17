@@ -147,7 +147,7 @@ span.tooltip {
     margin-bottom: 20px;
     padding: 10px 20px;
     border-top: 1px solid;
-    border-image: linear-gradient(to right, #ccc, rgba(204, 204, 204, 0)) 1;
+    border-image: light-dark(linear-gradient(to right, #232323, rgba(35, 35, 35, 0)), linear-gradient(to right, #ccc, rgba(204, 204, 204, 0))) 1;
     border-left: 1px solid #ccc;
 }
 
