@@ -1507,7 +1507,7 @@ function parseStep(parent_index, step, step_index) {
 
     // Show estimated portion of a zst snippet when loading a recording
     if (Object.keys(detectedScript).length) {
-        let matched_step = null;
+        var matched_step = null;
         let filtered_statements = [];
         let match_type = "";
         let get_step_id = step.description.match(/\((\d+)\)/);
@@ -1516,16 +1516,19 @@ function parseStep(parent_index, step, step_index) {
             filtered_statements = detectedScript.statements.filter((value, index) => {
                 return typeof value.index != "undefined" && value.index == parseInt(get_step_id[1]);
             });
-            matched_step = filtered_statements[0];
+            matched_step = filtered_statements[0] ?? null;
         } else {
             match_type = "index ";
             filtered_statements = detectedScript.statements.filter((value, index) => {
                 return typeof value.elementType != "undefined" && value.index > lastEstimatedStep && !value.elementType.match(/Zest(ClientElementClear|Comment)/i);
             });
-            matched_step = filtered_statements[0];
+            matched_step = filtered_statements[0] ?? null;
         }
-        lastEstimatedStep = parseInt(matched_step.index);
-        this_step.append(`<details><summary>zst snippet (${match_type}estimated)</summary><textarea class="code-block">${JSON.stringify(matched_step, null, " ")}</textarea></details>`)
+
+        if (matched_step !== null) {
+            lastEstimatedStep = parseInt(matched_step.index);
+            this_step.append(`<details><summary>zst snippet (${match_type}estimated)</summary><textarea class="code-block">${JSON.stringify(matched_step, null, " ")}</textarea></details>`)
+        }
     }
 
     if (step.webElement) {
