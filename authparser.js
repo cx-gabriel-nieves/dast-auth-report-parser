@@ -1124,7 +1124,7 @@ function parseContents(contents) {
 
     let display = $("#display");
     display.empty();
-    display.append($("<h1></h1>").text("Auth Report"));
+    // display.append($("<h1></h1>").text("Auth Report"));
 
     /* Meta */
     display.append($(`<h2 id="meta"></h2>`).text("Meta"));
@@ -1294,6 +1294,8 @@ function parseContents(contents) {
     });
 
 
+    $("#display").prop("hidden", false);
+    $("#default_display").prop("hidden", true);
     $(`[name="toggle_run"]:first`).prop("checked", true);
     displaySummary(0);
     updateStepDisplay();

@@ -60,6 +60,15 @@ a:hover {
     box-shadow: 1px 1px 5px light-dark(rgba(255, 50, 0, 0.3), rgba(255, 120, 60, 0.5));
 }
 
+#default_display {
+    line-height: 1.5em;
+}
+
+#default_display section {
+    font-size: 0.8em;
+    color: light-dark(#444, #aaa);
+}
+
 #summary ol {
     margin: 0;
 }

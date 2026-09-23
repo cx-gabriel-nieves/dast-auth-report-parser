@@ -49,14 +49,42 @@
             </div>
         </div>
 
-        <div id="default_display">
-            <h1>CxGabeN's DAST Auth Report Parser</h1>
+        <h1>CxGabeN's DAST Auth Report Parser</h1>
+        <main id="default_display">
             <p>This is a client-side JSON auth report parser for Checkmarx's DAST in CxOne. Uploading the file will not upload it to a server.</p>
             <p>This is not an AI-based tool.</p>
             <p>For questions or concerns, please refer to <a href="https://github.com/cx-gabriel-nieves/dast-auth-report-parser">the repository</a> or email <a href="mailto:gabriel.nieves@checkmarx.com">gabriel.nieves@checkmarx.com</a>.</p>
-            <p>Start by uploading a file at the top-right. If you don't have an auth report but want to test the tool, <a href="sample_auth-report.json" target="auth_sample">click here to download a sample auth report</a></p>
-        </div>
-        <div id="display"></div>
+            <p>Start by uploading a file at the top-right.</p>
+            <details id="json_report_instructions">
+                <summary>Where do I get a JSON auth report file?</summary>
+                <section>
+                    <p>To get a JSON auth report file, you will need access to a Checkmarx CxOne tenant with the DAST engine enabled.</p>
+                    <p>If you don't have an auth report but want to test the tool, <a href="sample_auth-report.json" target="auth_sample">click here to download a sample auth report</a></p>
+                    <ol>
+                        <li>
+                            <p>Use the onboarding wizard in the "Environments" section of CxOne to create the environment. Once you have either succeeded or encountered an authentication failure, you will be able to download an authentication report file. JSON-formatted reports can only be downloaded upon authentication <strong>failures</strong>.</p>
+                            <img src="images/cxone_dast_authentication_failure.png" style="width: 500px">
+                        </li>
+                        <li>
+                            <p>Open the authentication report panel by either using the tooltip or the dropdown.</p>
+                            <p>
+                                <div><strong>Via tooltip:</strong> Open the authentication report panel by hovering over the Auth tooltip with the red X, then clicking "View / Export Report"</div>
+                                <img src="images/auth_report_tooltip.png" alt="Open the authentication report panel by hovering over the Auth tooltip with the red X" title="Open the authentication report panel by hovering over the Auth tooltip with the red X">
+                            </p>
+                            <p>
+                                <div><strong>Via dropdown:</strong> Open the authentication report panel by clicking the three dots to configure the environment, then clicking Authentication Report</div>
+                                <img src="images/auth_report_dropdown.png" alt="Open the authentication report panel by clicking the three dots to configure the environment, then clicking Authentication Report" title="Open the authentication report panel by clicking the three dots to configure the environment, then clicking Authentication Report">
+                            </p>
+                        </li>
+                        <li>
+                            <p>Click on the arrow at the bottom-right of the Authentication Report panel, then click "Auth Report (JSON)"</p>
+                            <img src="images/auth_report_json_download.png">
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+        <main id="display" hidden></main>
         <div id="large-screenshot" popover></div>
         <div id="auth_report_editor" popover>
             <textarea id="auth_report_json" rows="30" cols="100" style="max-width: 100%" placeholder="Paste json report or upload above"></textarea><br>
